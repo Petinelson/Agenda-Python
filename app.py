@@ -3,7 +3,7 @@ from flask_session import Session
 import os
 import uuid
 
-load_dotenv()
+
 
 app = Flask(__name__)
 app.secret_key = 'chave_secreta'
