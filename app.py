@@ -3,6 +3,8 @@ from flask_session import Session
 import os
 import uuid
 
+load_dotenv()
+
 app = Flask(__name__)
 app.secret_key = 'chave_secreta'
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -95,4 +97,4 @@ def injetar_username():
     return dict(username=session.get('usuario_logado'))
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    """app.run(debug=True, host='0.0.0.0')"""
