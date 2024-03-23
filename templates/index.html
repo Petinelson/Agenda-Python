@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="welcome-logout">
+                <h1>Sistema de Cadastro</h1>
+                <div>
+                    <span>Bem-vindo, {{ username }}! </span>
+                    <a href="/logout" class="btn btn-logout">Sair</a>
+                </div>
+            </div>
+            <h2>Listagem de Pessoas</h2>
+        </header>
+        <div>
+            <a href="/adicionar" class="btn btn-add">Adicionar Nova Pessoa</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pessoa in pessoas %}
+                <tr>
+                    <td>{{ pessoa.nome }}</td>
+                    <td>{{ pessoa.email }}</td>
+                    <td>
+                        <a href="/editar/{{ pessoa.id }}" class="btn btn-edit">Editar</a>
+                        <a href="/deletar/{{ pessoa.id }}" class="btn btn-delete" onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
